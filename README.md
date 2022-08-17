@@ -1,6 +1,6 @@
 # Dupfile
 
-**TODO: Add description**
+A file duplication finder utility written using Elixir.
 
 ## Installation
 

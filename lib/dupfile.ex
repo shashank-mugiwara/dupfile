@@ -4,15 +4,9 @@ defmodule Dupfile do
   """
 
   @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> Dupfile.hello()
-      :world
-
+  A file duplication finder utility written in Elixir
   """
-  def hello do
-    :world
+  def dupfile do
+    "Hello World!, I am here to find file duplicates."
   end
 end
