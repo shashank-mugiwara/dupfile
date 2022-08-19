@@ -1,5 +1,4 @@
 defmodule Dupfile.Results do
-
   use GenServer
 
   @me __MODULE__
@@ -17,11 +16,11 @@ defmodule Dupfile.Results do
   end
 
   def init(:no_args) do
-    { :ok, %{} }
+    {:ok, %{}}
   end
 
   def handle_cast({:add, path, hash}, results) do
-    results = Map.update(results, hash, [ path ], fn existing -> [ path | existing ] end)
+    results = Map.update(results, hash, [path], fn existing -> [path | existing] end)
     {:noreply, results}
   end
 
@@ -38,5 +37,4 @@ defmodule Dupfile.Results do
     |> Enum.filter(fn {_hash, paths} -> length(paths) > 1 end)
     |> Enum.map(&elem(&1, 1))
   end
-
 end
