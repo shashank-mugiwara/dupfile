@@ -7,6 +7,6 @@ defmodule Dupfile do
   A file duplication finder utility written in Elixir
   """
   def dupfile do
-    "Hello World!, I am here to find file duplicates."
+    :hello
   end
 end

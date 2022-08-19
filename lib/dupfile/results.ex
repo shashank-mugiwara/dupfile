@@ -7,12 +7,12 @@ defmodule Dupfile.Results do
     GenServer.start_link(__MODULE__, :no_args, name: @me)
   end
 
-  def find_duplicates() do
-    GenServer.call(@me, :find_duplicates)
-  end
-
   def add_hash_for(path, hash) do
     GenServer.cast(@me, {:add, path, hash})
+  end
+
+  def find_duplicates() do
+    GenServer.call(@me, :find_duplicates)
   end
 
   def init(:no_args) do
@@ -24,9 +24,9 @@ defmodule Dupfile.Results do
     {:noreply, results}
   end
 
-  def handle_call(:find_duplicates, _from, results) do
+  def handle_call(:find_duplicates, results) do
     {
-      :reply,
+      :ok,
       hashes_with_more_than_one_path(results),
       results
     }

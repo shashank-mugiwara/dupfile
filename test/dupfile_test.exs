@@ -3,6 +3,6 @@ defmodule DupfileTest do
   doctest Dupfile
 
   test "greets the world" do
-    assert Dupfile.hello() == :world
+    assert Dupfile.dupfile() == :hello
   end
 end
