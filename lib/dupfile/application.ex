@@ -5,9 +5,14 @@ defmodule Dupfile.Application do
 
   @impl true
   def start(_type, _args) do
-    children = [Dupfile.Results, {Dupfile.Pathfinder, "."}]
+    children = [
+      Dupfile.Results,
+      {Dupfile.Pathfinder, "."},
+      Dupfile.WorkerSupervisor,
+      {Dupfile.Gatherer, 1}
+    ]
 
-    opts = [strategy: :one_for_one, name: Dupfile.Supervisor]
+    opts = [strategy: :one_for_all, name: Dupfile.Supervisor]
     Supervisor.start_link(children, opts)
   end
 end
