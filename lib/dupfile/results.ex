@@ -24,9 +24,9 @@ defmodule Dupfile.Results do
     {:noreply, results}
   end
 
-  def handle_call(:find_duplicates, results) do
+  def handle_call(:find_duplicates, _from, results) do
     {
-      :ok,
+      :reply,
       hashes_with_more_than_one_path(results),
       results
     }

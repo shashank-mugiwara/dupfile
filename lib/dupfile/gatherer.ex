@@ -26,6 +26,11 @@ defmodule Dupfile.Gatherer do
     {:noreply, worker_count}
   end
 
+  def handle_cast(:done, _worker_count = 1) do
+    report_results()
+    System.halt(0)
+  end
+
   def handle_cast(:done, worker_count) do
     {:noreply, worker_count - 1}
   end
@@ -33,11 +38,6 @@ defmodule Dupfile.Gatherer do
   def handle_cast({:result, path, hash}, worker_count) do
     Dupfile.Results.add_hash_for(path, hash)
     {:noreply, worker_count}
-  end
-
-  def handle_cast(:done, _worker_count = 1) do
-    report_results()
-    System.halt(0)
   end
 
   def report_results() do
