@@ -1,5 +1,5 @@
 defmodule Dupfile.ResultsTest do
-  use ExUnit.Test
+  use ExUnit.Case
   alias Dupfile.Results
 
   test "Test whether we can add entries to the results" do
